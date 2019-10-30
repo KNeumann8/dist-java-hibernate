@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed Oct 30 03:16:33 CDT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-016e-1bbc-e062-00000c22c708 
-on database directory C:\Users\moogi\IdeaProjects\HibernateDemo\db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
-Loaded from file:/C:/Users/moogi/IdeaProjects/HibernateDemo/lib/derby-10.14.1.0.jar
+Wed Oct 30 16:34:21 CDT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-016e-1e97-4707-00000c018b90 
+on database directory C:\Users\bitinstructor\IdeaProjects\dist-java-hibernate\db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Loaded from file:/C:/Users/bitinstructor/IdeaProjects/dist-java-hibernate/lib/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=12.0.2+10
-user.dir=C:\Users\moogi\IdeaProjects\HibernateDemo
+user.dir=C:\Users\bitinstructor\IdeaProjects\dist-java-hibernate
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
