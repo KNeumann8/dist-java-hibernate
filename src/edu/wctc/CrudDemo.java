@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Date;
 import java.util.List;
 
 public class CrudDemo {
@@ -44,22 +45,6 @@ public class CrudDemo {
 
     private void close() {
         factory.close();
-    }
-
-    private void tester() {
-        Session session = factory.getCurrentSession();
-
-        // Start a transaction
-        session.beginTransaction();
-
-        // *** Do CRUD ***
-        List<Donut> list = session.createQuery("from Donut").getResultList();
-        for (Donut d : list) {
-            d.setImageFilename(d.getImageFilename().replaceAll("-", "_"));
-        }
-
-        // Commit the transaction
-        session.getTransaction().commit();
     }
 
     private void doCrud() {
