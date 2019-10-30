@@ -85,7 +85,7 @@ insert into donut_shop(nm, img_directory)
 values ('Krispy Kreme', 'krispy-kreme');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (1, 'Glazed Donut', 260, 'glazed', '10/28/2019');
+VALUES (1, 'Glazed Donut', 260, 'glazed.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (1,
@@ -93,7 +93,7 @@ values (1,
         4.9, '10/27/2019');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (1, 'French Cruller', 220, 'french-cruller', '10/28/2019');
+VALUES (1, 'French Cruller', 220, 'french-cruller.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (2,
@@ -101,7 +101,7 @@ values (2,
         4.7, '10/27/2019');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (1, 'Sour Cream', 360, 'sour-cream', '10/28/2019');
+VALUES (1, 'Sour Cream', 360, 'sour-cream.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (3,
@@ -109,7 +109,7 @@ values (3,
         4.6, '10/26/2019');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (1, 'Bavarian Kreme-Filled', 270, 'bavarian-kreme-filled', '10/28/2019');
+VALUES (1, 'Bavarian Kreme-Filled', 270, 'bavarian-kreme-filled.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (4,
@@ -117,7 +117,7 @@ values (4,
         3.2, '10/23/2019');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (1, 'Jelly', 280, 'jelly', '10/28/2019');
+VALUES (1, 'Jelly', 280, 'jelly.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (5,
@@ -125,13 +125,13 @@ values (5,
         2.9, '10/24/2019');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (2, 'Original Glazed', 190, 'original-glazed', '10/28/2019');
+VALUES (2, 'Original Glazed', 190, 'original-glazed.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (6, 'There''s nothing in the world better than a hot-out-of-the-oven original glazed donut.', 4.9, '10/28/2019');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (2, 'Chocolate Iced Glazed', 240, 'chocolate-iced-glazed', '10/28/2019');
+VALUES (2, 'Chocolate Iced Glazed', 240, 'chocolate-iced-glazed.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (7,
@@ -139,7 +139,7 @@ values (7,
         4.1, '10/27/2019');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (2, 'Cake Batter', 360, 'cake-batter', '10/28/2019');
+VALUES (2, 'Cake Batter', 360, 'cake-batter.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (8,
@@ -147,7 +147,7 @@ values (8,
         3.8, '10/22/2019');
 
 insert into donut (shop_id, nm, calories, img_filename, date_added)
-VALUES (2, 'Apple Fritter', 350, 'apple-fritter', '10/28/2019');
+VALUES (2, 'Apple Fritter', 350, 'apple-fritter.png', '10/28/2019');
 
 insert into donut_review(donut_id, review, stars, review_date)
 values (9,
