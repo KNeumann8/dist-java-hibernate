@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Wed Oct 30 21:14:45 CDT 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-016e-1f97-ffd2-00000b77a3e8 
+Mon Nov 04 20:28:39 CST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-016e-3964-8351-00000b7f6e00 
 on database directory C:\Users\bitinstructor\IdeaProjects\dist-java-hibernate\db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
 Loaded from file:/C:/Users/bitinstructor/IdeaProjects/dist-java-hibernate/lib/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
