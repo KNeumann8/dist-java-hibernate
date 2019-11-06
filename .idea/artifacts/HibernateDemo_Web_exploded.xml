@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="HibernateDemo:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/HibernateDemo_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="HibernateDemo/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="HibernateDemo" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Hibernate 5.4.5-5.4.5" />
+          <element id="library" level="project" name="org.apache.derby:derby:10.14.1.0" />
+          <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
+          <element id="library" level="project" name="Spring MVC-4.3.18.RELEASE" />
+          <element id="library" level="project" name="jstl:jstl:1.2" />
+          <element id="library" level="project" name="c3p0:c3p0:0.9.1.2" />
+        </element>
+        <element id="directory" name="db">
+          <element id="dir-copy" path="$PROJECT_DIR$/db" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
