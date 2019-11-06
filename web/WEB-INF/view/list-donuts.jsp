@@ -14,7 +14,7 @@
     </tr>
     <c:forEach var="tempDonut" items="${donuts}">
         <tr>
-            <td>${tempDonut.shopId}</td>
+            <td>${tempDonut.shop.name}</td>
             <td>${tempDonut.name}</td>
             <td>${tempDonut.calories}</td>
             <td>${tempDonut.dateAdded}</td>

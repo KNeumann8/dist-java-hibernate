@@ -1,9 +1,7 @@
 package edu.wctc.inclassam;
 
 import edu.wctc.DateUtils;
-import edu.wctc.inclassam.entity.Donut;
-import edu.wctc.inclassam.entity.DonutShop;
-import edu.wctc.inclassam.entity.DonutShopDetail;
+import edu.wctc.inclassam.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -19,6 +17,8 @@ public class CrudDemo {
                 .addAnnotatedClass(Donut.class)
                 .addAnnotatedClass(DonutShop.class)
                 .addAnnotatedClass(DonutShopDetail.class)
+                .addAnnotatedClass(DonutReview.class)
+                .addAnnotatedClass(City.class)
                 .buildSessionFactory();
     }
 
@@ -26,10 +26,116 @@ public class CrudDemo {
         CrudDemo demo = new CrudDemo();
 
         try {
-            demo.deleteDetail();
+            demo.createCityAndShop();
         } finally {
             demo.close();
         }
+    }
+
+    private void createCityAndShop() {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        // Do stuff
+        City city = new City("Pewaukee", "WI");
+        session.save(city);
+
+        DonutShop shop = new DonutShop("Stacy's Donuts", "stacys-donut");
+        city.add(shop);
+        session.save(shop);
+
+        session.getTransaction().commit();
+    }
+
+    private void getReviewsForDonut() {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        // Do stuff
+        Donut aDonut = session.get(Donut.class, 701);
+        Donut anotherDonut = session.createQuery("from Donut where name = 'Pineapple'", Donut.class).getSingleResult();
+
+        for (DonutReview review : anotherDonut.getReviews()){
+            System.out.println(review);
+        }
+
+        session.delete(anotherDonut);
+
+        session.getTransaction().commit();
+    }
+
+    private void createReviewsForDonut() {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        // Do stuff
+        Donut newDonut = new Donut("Pineapple", 300, "pineapple", new Date());
+        DonutReview review1 = new DonutReview("Who puts pineapple in a donut??", 1.5, new Date());
+        DonutReview review2 = new DonutReview("A revelation!", 4.9, new Date());
+
+        newDonut.add(review1);
+        newDonut.add(review2);
+
+        session.save(newDonut);
+
+        session.getTransaction().commit();
+    }
+
+    private void deleteDonut2(int donutId) {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        // Do stuff
+        Donut doomedDonut = session.get(Donut.class, donutId);
+
+        if (doomedDonut == null){
+            System.out.println("No donut for ID " + donutId);
+        } else {
+            session.delete(doomedDonut);
+        }
+
+        session.getTransaction().commit();
+    }
+
+    private void getDonutsForShop(int shopId) {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        // Do stuff
+        DonutShop aShop = session.get(DonutShop.class, shopId);
+
+        for (Donut aDonut : aShop.getDonuts()) {
+            System.out.println(aDonut);
+        }
+
+        session.getTransaction().commit();
+    }
+
+    private void createDonutsForShop(int shopId) {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        // Do stuff
+        DonutShop aShop = session.get(DonutShop.class, shopId);
+
+        Donut donut1 = new Donut("Bavarian Créme", 390, "bav-cream", new Date());
+        Donut donut2 = new Donut("Cherry", 285, "cherry", new Date());
+
+        aShop.add(donut1);
+        aShop.add(donut2);
+
+        session.save(donut1);
+        System.out.println(donut1);
+        session.save(donut2);
+        System.out.println(donut2);
+
+        session.getTransaction().commit();
     }
 
     private void deleteDetail() {
@@ -210,7 +316,7 @@ public class CrudDemo {
 
         // Do stuff
         Date sepFirst = DateUtils.parseDate("09/01/2019");
-        Donut donut = new Donut(1, "Marble", 300, "marble.png", sepFirst);
+        Donut donut = new Donut("Marble", 300, "marble.png", sepFirst);
 
         session.save(donut);
 
@@ -219,15 +325,7 @@ public class CrudDemo {
         return donut.getId();
     }
 
-    private void crudTemplate() {
-        Session session = factory.getCurrentSession();
 
-        session.beginTransaction();
-
-        // Do stuff
-
-        session.getTransaction().commit();
-    }
 
     private void close() {
         factory.close();

@@ -3,37 +3,72 @@ package edu.wctc.inclassam.entity;
 import edu.wctc.DateUtils;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name="donut")
+@Table(name = "donut")
 public class Donut {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="donut_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "donut_id")
     private int id;
-    @Column(name="shop_id")
-    private int shopId;
-    @Column(name="nm")
+
+    @ManyToOne(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
+    @JoinColumn(name = "shop_id")
+    private DonutShop shop;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="donut_id")
+    private List<DonutReview> reviews;
+
+
+    @Column(name = "nm")
     private String name;
-    @Column(name="calories")
+    @Column(name = "calories")
     private int calories;
-    @Column(name="img_filename")
+    @Column(name = "img_filename")
     private String imageFilename;
-    @Column(name="date_added")
+    @Column(name = "date_added")
     private Date dateAdded;
 
     public Donut() {
         // no-arg constructor
     }
 
-    public Donut(int shopId, String name, int calories, String imageFilename, Date dateAdded) {
-        this.shopId = shopId;
+    public Donut(String name, int calories, String imageFilename, Date dateAdded) {
         this.name = name;
         this.calories = calories;
         this.imageFilename = imageFilename;
         this.dateAdded = dateAdded;
+    }
+
+    public void add(DonutReview tempReview){
+        if (reviews == null){
+            reviews = new ArrayList<>();
+        }
+        reviews.add(tempReview);
+    }
+
+    public List<DonutReview> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<DonutReview> reviews) {
+        this.reviews = reviews;
+    }
+
+    public DonutShop getShop() {
+        return shop;
+    }
+
+    public void setShop(DonutShop shop) {
+        this.shop = shop;
     }
 
     public int getId() {
@@ -42,14 +77,6 @@ public class Donut {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
     }
 
     public String getName() {
@@ -88,11 +115,11 @@ public class Donut {
     public String toString() {
         return "Donut{" +
                 "id=" + id +
-                ", shopId=" + shopId +
+                ", shop=" + shop.getName() +
                 ", name='" + name + '\'' +
                 ", calories=" + calories +
                 ", imageFilename='" + imageFilename + '\'' +
-                ", dateAdded=" + DateUtils.formatDate(dateAdded) +
+                ", dateAdded=" + dateAdded +
                 '}';
     }
 }
