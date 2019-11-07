@@ -1,9 +1,7 @@
 package edu.wctc.inclasspm;
 
 import edu.wctc.DateUtils;
-import edu.wctc.inclasspm.entity.Donut;
-import edu.wctc.inclasspm.entity.DonutShop;
-import edu.wctc.inclasspm.entity.DonutShopDetail;
+import edu.wctc.inclasspm.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -19,6 +17,8 @@ public class CrudDemo {
                 .addAnnotatedClass(Donut.class)
                 .addAnnotatedClass(DonutShop.class)
                 .addAnnotatedClass(DonutShopDetail.class)
+                .addAnnotatedClass(DonutReview.class)
+                .addAnnotatedClass(City.class)
                 .buildSessionFactory();
     }
 
@@ -32,11 +32,100 @@ public class CrudDemo {
         try {
             //demo.deleteDonut(301);
             //demo.deleteDonutTen();
-            demo.deleteDetail();
+            demo.createCityAndShop();
 
         } finally {
             demo.close();
         }
+    }
+
+    private void deleteRaspberryDonut() {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        /** DO CRUD **/
+        Donut doomedDonut = session.get(Donut.class, 1001);
+        session.delete(doomedDonut);
+
+        session.getTransaction().commit();
+    }
+
+    private void createDonutAndReviews() {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        /** DO CRUD **/
+        Donut aDonut = new Donut("Raspberry Filled", 278, "raspberry", new Date());
+        DonutReview review1 = new DonutReview("A revelation!", 10, new Date());
+        DonutReview review2 = new DonutReview("Pretty good", 2.5, new Date());
+
+        session.save(aDonut);
+
+        aDonut.add(review1);
+        aDonut.add(review2);
+
+        session.getTransaction().commit();
+    }
+
+    private void createCityAndShop() {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        /** DO CRUD **/
+        City city = new City("Tucson", "AZ");
+        session.save(city);
+
+        DonutShop shop = new DonutShop("Tyler's Donuts", "tylers-donuts");
+        city.add(shop);
+
+        session.getTransaction().commit();
+    }
+
+    private void deleteDonut() {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        /** DO CRUD **/
+        session.createQuery("delete from Donut where name like '%Rainbow%'").executeUpdate();
+
+        session.getTransaction().commit();
+    }
+
+    private void printDonutsForShop(int shopId) {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        /** DO CRUD **/
+        DonutShop aShop = session.get(DonutShop.class, shopId);
+
+        for (Donut aDonut : aShop.getDonuts()) {
+            System.out.println(aDonut);
+        }
+
+
+        session.getTransaction().commit();
+    }
+
+    private void createDonutsForShop(int shopId) {
+        Session session = factory.getCurrentSession();
+
+        session.beginTransaction();
+
+        /** DO CRUD **/
+
+        DonutShop aShop = session.get(DonutShop.class, shopId);
+        Donut donut1 = new Donut("Rainbow Kringle", 390, "rainbow", new Date() );
+        Donut donut2 = new Donut("Deep Fried Long John", 1000, "longjohn", new Date());
+
+        aShop.add(donut1);
+        aShop.add(donut2);
+
+        session.getTransaction().commit();
     }
 
     private void deleteDetail() {
@@ -217,7 +306,7 @@ public class CrudDemo {
         /** DO CRUD **/
         Date sepFirst = DateUtils.parseDate("09/01/2019");
 
-        Donut donut = new Donut(1, "Chocolate", 275, "marble.png", sepFirst);
+        Donut donut = new Donut("Chocolate", 275, "marble.png", sepFirst);
 
         session.save(donut);
 
@@ -228,14 +317,6 @@ public class CrudDemo {
         return donut.getId();
     }
 
-    private void crudTemplate() {
-        Session session = factory.getCurrentSession();
 
-        session.beginTransaction();
-
-        /** DO CRUD **/
-
-        session.getTransaction().commit();
-    }
 
 }
