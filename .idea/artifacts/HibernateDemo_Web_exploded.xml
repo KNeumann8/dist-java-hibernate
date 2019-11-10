@@ -12,8 +12,8 @@
           <element id="library" level="project" name="org.apache.derby:derby:10.14.1.0" />
           <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
           <element id="library" level="project" name="Spring MVC-4.3.18.RELEASE" />
-          <element id="library" level="project" name="jstl:jstl:1.2" />
           <element id="library" level="project" name="c3p0:c3p0:0.9.1.2" />
+          <element id="library" level="project" name="jstl" />
         </element>
         <element id="directory" name="db">
           <element id="dir-copy" path="$PROJECT_DIR$/db" />

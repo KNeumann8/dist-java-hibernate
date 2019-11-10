@@ -34,7 +34,7 @@
     <orderEntry type="library" name="org.apache.derby:derby:10.14.1.0" level="project" />
     <orderEntry type="library" name="Spring-4.3.18.RELEASE" level="project" />
     <orderEntry type="library" name="Spring MVC-4.3.18.RELEASE" level="project" />
-    <orderEntry type="library" name="jstl:jstl:1.2" level="project" />
     <orderEntry type="library" name="c3p0:c3p0:0.9.1.2" level="project" />
+    <orderEntry type="library" name="jstl" level="project" />
   </component>
 </module>
