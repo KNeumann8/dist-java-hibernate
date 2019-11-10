@@ -32,7 +32,7 @@ public class CrudDemo {
         try {
             //demo.deleteDonut(301);
             //demo.deleteDonutTen();
-            demo.createCityAndShop();
+            //demo.createCityAndShop();
 
         } finally {
             demo.close();

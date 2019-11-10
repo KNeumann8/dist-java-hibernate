@@ -2,10 +2,10 @@
   <library name="Spring MVC-4.3.18.RELEASE" type="spring-mvc">
     <properties version="4.3.18.RELEASE" />
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libspringmvc/spring-webmvc-portlet-4.3.18.RELEASE.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libspringmvc/spring-websocket-4.3.18.RELEASE.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libspringmvc/spring-webmvc-4.3.18.RELEASE.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libspringmvc/spring-web-4.3.18.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/springmvc/spring-web-4.3.18.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/springmvc/spring-webmvc-4.3.18.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/springmvc/spring-webmvc-portlet-4.3.18.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/springmvc/spring-websocket-4.3.18.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -26,7 +26,7 @@ public class CrudDemo {
         CrudDemo demo = new CrudDemo();
 
         try {
-            demo.createCityAndShop();
+           // demo.createCityAndShop();
         } finally {
             demo.close();
         }

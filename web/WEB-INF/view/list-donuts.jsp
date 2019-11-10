@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>List Donuts</title>
+    <link type="text/css" rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
 <table>
