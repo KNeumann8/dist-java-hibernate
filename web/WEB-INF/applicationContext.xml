@@ -10,7 +10,7 @@
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <!-- JDBC Database connection settings -->
         <property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-        <property name="jdbcUrl" value="jdbc:derby:#{ servletContext.getRealPath('/WEB-INF/db') }"/>
+        <property name="jdbcUrl" value="jdbc:derby:#{ servletContext.getRealPath('/') }/../../../db"/>
         <property name="user" value="donut_reviews"/>
         <property name="password" value="stacy"/>
 
@@ -36,6 +36,20 @@
     <!-- Hibernate's transaction manager -->
     <bean id="myTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="mySessionFactory"/>
+    </bean>
+
+    <!-- Beans for converting from Strings to entity objects -->
+    <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+
+            </list>
+        </property>
+    </bean>
+
+    <!-- Multipart upload resolver lets Spring intercept and read uploaded files -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000"/>
     </bean>
 
     <!-- Enable transactional annotations -->
