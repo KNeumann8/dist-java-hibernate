@@ -40,4 +40,9 @@ tr {
 	border-style:none;
 	text-align:left;	
 }
+
+.error {
+	color: red;
+	font-size: x-small;
+}
 	
