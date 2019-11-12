@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="validator">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/validator" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/validator" recursive="false" />
+  </library>
+</component>
