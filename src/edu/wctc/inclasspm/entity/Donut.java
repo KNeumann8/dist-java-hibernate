@@ -111,6 +111,19 @@ public class Donut {
         this.dateAdded = dateAdded;
     }
 
+    public String getFormattedDate() {
+        return DateUtils.formatDate(dateAdded);
+    }
+
+    public String getImagePath() {
+        if (shop == null || imageFilename == null){
+            return "none.jpg";
+        }
+        return shop.getImageDirectory()
+                + "/"
+                + imageFilename;
+    }
+
     @Override
     public String toString() {
         return "Donut{" +

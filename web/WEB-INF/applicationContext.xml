@@ -24,7 +24,7 @@
     <!-- Hibernate session factory bean -->
     <bean id="mySessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource"/>
-        <property name="packagesToScan" value="edu.wctc.inclassam.entity" />
+        <property name="packagesToScan" value="edu.wctc.inclasspm.entity" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
@@ -42,7 +42,7 @@
     <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <list>
-
+                <bean class="edu.wctc.inclasspm.service.converter.StringToDonutShopConverter"/>
             </list>
         </property>
     </bean>
@@ -58,10 +58,10 @@
     <!-- END NEW HIBERNATE CONFIGURATION -->
 
     <!-- Support for component scanning -->
-    <context:component-scan base-package="edu.wctc.inclassam"/>
+    <context:component-scan base-package="edu.wctc.inclasspm"/>
 
     <!-- Support for conversion, formatting, and validation -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="myConversionService"/>
 
     <!-- Configure Spring MVC view resolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

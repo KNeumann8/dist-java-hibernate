@@ -3,25 +3,47 @@
 <html>
 <head>
     <title>List Donuts</title>
-    <link type="text/css" rel="stylesheet" href="resources/css/style.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
-<table>
-    <tr>
-        <th>Shop ID</th>
-        <th>Name</th>
-        <th>Calories</th>
-        <th>Date Added</th>
-    </tr>
-    <c:forEach var="tempDonut" items="${donuts}">
-        <tr>
-            <td>${tempDonut.shop.name}</td>
-            <td>${tempDonut.name}</td>
-            <td>${tempDonut.calories}</td>
-            <td>${tempDonut.dateAdded}</td>
-        </tr>
-    </c:forEach>
+<div id="wrapper">
+    <div id="header">
+        <h2>Donut Reviews</h2>
+    </div>
+</div>
 
-</table>
+<button class="add-button"
+        onclick="window.location.href='showAddDonutForm';
+        return false;">Add Donut</button>
+
+
+<div id="container">
+    <div id="content">
+        <table>
+            <tr>
+                <th></th>
+                <th>Shop</th>
+                <th>Name</th>
+                <th>Calories</th>
+                <th>Date Added</th>
+            </tr>
+
+            <c:forEach var="tempDonut" items="${donuts}">
+                <tr>
+                    <td>
+                        <img src="${pageContext.request.contextPath}/resources/img/${tempDonut.imagePath}"
+                        alt="${tempDonut.name}">
+                    </td>
+                    <td>${tempDonut.shop.name}</td>
+                    <td>${tempDonut.name}</td>
+                    <td>${tempDonut.calories}</td>
+                    <td>${tempDonut.formattedDate}</td>
+                </tr>
+
+            </c:forEach>
+
+        </table>
+    </div>
+</div>
 </body>
 </html>
