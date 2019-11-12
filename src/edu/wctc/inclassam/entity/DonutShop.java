@@ -24,10 +24,11 @@ public class DonutShop {
             cascade = CascadeType.ALL)
     private List<Donut> donuts;
 
-    @ManyToMany(cascade = {CascadeType.DETACH,
+    @ManyToMany(cascade = CascadeType.ALL
+            /**{CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
-            CascadeType.REFRESH})
+            CascadeType.REFRESH}**/)
     @JoinTable(name="donut_shop_city",
             joinColumns = @JoinColumn(name="shop_id"),
             inverseJoinColumns = @JoinColumn(name="city_id"))

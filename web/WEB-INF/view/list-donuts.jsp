@@ -12,13 +12,13 @@
     </div>
 </div>
 
-<button class="add-button"
-        onclick="window.location.href='showAddDonutForm';
-        return false;">Add Donut</button>
-
-
 <div id="container">
+
     <div id="content">
+
+        <button class="add-button"
+                onclick="window.location.href='showAddDonutForm'; return false;">Add Donut</button>
+
         <table>
             <tr>
                 <th></th>
@@ -27,21 +27,18 @@
                 <th>Calories</th>
                 <th>Date Added</th>
             </tr>
-
             <c:forEach var="tempDonut" items="${donuts}">
                 <tr>
                     <td>
                         <img src="${pageContext.request.contextPath}/resources/img/${tempDonut.imagePath}"
-                        alt="${tempDonut.name}">
+                             alt="${tempDonut.name}">
                     </td>
                     <td>${tempDonut.shop.name}</td>
                     <td>${tempDonut.name}</td>
                     <td>${tempDonut.calories}</td>
                     <td>${tempDonut.formattedDate}</td>
                 </tr>
-
             </c:forEach>
-
         </table>
     </div>
 </div>

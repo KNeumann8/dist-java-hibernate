@@ -26,7 +26,7 @@ public class CrudDemo {
         CrudDemo demo = new CrudDemo();
 
         try {
-           // demo.createCityAndShop();
+           demo.deleteShopAndDetail();
         } finally {
             demo.close();
         }
@@ -157,7 +157,7 @@ public class CrudDemo {
 
         session.beginTransaction();
 
-        DonutShop myShop = session.get(DonutShop.class, 101);
+        DonutShop myShop = session.get(DonutShop.class, 301);
 
         session.delete(myShop);
 

@@ -3,6 +3,9 @@ package edu.wctc.inclassam.entity;
 import edu.wctc.DateUtils;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,15 +26,21 @@ public class Donut {
     @JoinColumn(name = "shop_id")
     private DonutShop shop;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="donut_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "donut_id")
     private List<DonutReview> reviews;
 
 
+    @NotNull(message = "required")
+    @Size(min = 1, max = 30, message = "1-30 characters")
     @Column(name = "nm")
     private String name;
+
+    @NotNull(message = "required")
+    @Min(value = 1, message = " must be greater than 0")
     @Column(name = "calories")
-    private int calories;
+    private Integer calories;
+
     @Column(name = "img_filename")
     private String imageFilename;
     @Column(name = "date_added")
@@ -41,15 +50,15 @@ public class Donut {
         // no-arg constructor
     }
 
-    public Donut(String name, int calories, String imageFilename, Date dateAdded) {
+    public Donut(String name, Integer calories, String imageFilename, Date dateAdded) {
         this.name = name;
         this.calories = calories;
         this.imageFilename = imageFilename;
         this.dateAdded = dateAdded;
     }
 
-    public void add(DonutReview tempReview){
-        if (reviews == null){
+    public void add(DonutReview tempReview) {
+        if (reviews == null) {
             reviews = new ArrayList<>();
         }
         reviews.add(tempReview);
@@ -87,11 +96,11 @@ public class Donut {
         this.name = name;
     }
 
-    public int getCalories() {
+    public Integer getCalories() {
         return calories;
     }
 
-    public void setCalories(int calories) {
+    public void setCalories(Integer calories) {
         this.calories = calories;
     }
 
@@ -109,6 +118,16 @@ public class Donut {
 
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
+    }
+
+    public String getFormattedDate() {
+        return DateUtils.formatDate(dateAdded);
+    }
+
+    public String getImagePath() {
+        if (imageFilename == null || shop == null)
+            return "none.jpg";
+        return shop.getImageDirectory() + "/" + imageFilename;
     }
 
     @Override
