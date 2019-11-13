@@ -25,6 +25,10 @@
                     </form:select></td>
             </tr>
             <tr>
+                <td><label>Image</label></td>
+                <td><input type="file" name="donutImage"></td>
+            </tr>
+            <tr>
                 <td></td>
                 <td><input type="submit" value="Save" class="save"></td>
             </tr>
