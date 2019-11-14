@@ -10,30 +10,23 @@ import java.util.List;
 
 @Repository
 public class DonutShopDAOImpl implements DonutShopDAO {
+
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<DonutShop> getDonutShops() {
-        // Get current Hibernate session
+    public List<DonutShop> getShops() {
         Session session = sessionFactory.getCurrentSession();
 
-        // Get list of donut shops from query
-        List<DonutShop> donutShopList = session.createQuery("from DonutShop", DonutShop.class).getResultList();
+        List<DonutShop> list = session.createQuery("from DonutShop", DonutShop.class).getResultList();
 
-        // Return results
-        return donutShopList;
+        return list;
     }
 
     @Override
-    public DonutShop getDonutShop(int id) {
-        // Get current Hibernate session
+    public DonutShop getShop(int id) {
         Session session = sessionFactory.getCurrentSession();
 
-        // Get donut shop by primary key
-        DonutShop aShop = session.get(DonutShop.class, id);
-
-        // Return results
-        return aShop;
+        return session.get(DonutShop.class, id);
     }
 }

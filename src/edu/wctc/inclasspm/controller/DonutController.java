@@ -28,7 +28,7 @@ public class DonutController {
 
         theModel.addAttribute("donuts", donutList);
 
-        return "list-donuts";
+        return "pm/list-donuts";
     }
 
     @GetMapping("/showAddDonutForm")
@@ -39,7 +39,7 @@ public class DonutController {
 
         theModel.addAttribute("shops", donutShopService.getDonutShops());
 
-        return "add-donut-form";
+        return "pm/add-donut-form";
     }
 
     @PostMapping("/save")

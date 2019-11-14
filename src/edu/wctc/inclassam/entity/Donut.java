@@ -30,19 +30,19 @@ public class Donut {
     @JoinColumn(name = "donut_id")
     private List<DonutReview> reviews;
 
-
     @NotNull(message = "required")
     @Size(min = 1, max = 30, message = "1-30 characters")
     @Column(name = "nm")
     private String name;
 
     @NotNull(message = "required")
-    @Min(value = 1, message = " must be greater than 0")
+    @Min(value = 1, message = "greater than 0")
     @Column(name = "calories")
     private Integer calories;
 
     @Column(name = "img_filename")
     private String imageFilename;
+
     @Column(name = "date_added")
     private Date dateAdded;
 
@@ -50,7 +50,7 @@ public class Donut {
         // no-arg constructor
     }
 
-    public Donut(String name, Integer calories, String imageFilename, Date dateAdded) {
+    public Donut(String name, int calories, String imageFilename, Date dateAdded) {
         this.name = name;
         this.calories = calories;
         this.imageFilename = imageFilename;
@@ -62,6 +62,19 @@ public class Donut {
             reviews = new ArrayList<>();
         }
         reviews.add(tempReview);
+    }
+
+    public String getImagePath() {
+        if (shop == null || imageFilename == null) {
+            return "none.jpg";
+        }
+        return shop.getImageDirectory()
+                + "/"
+                + imageFilename;
+    }
+
+    public String getFormattedDate() {
+        return DateUtils.formatDate(dateAdded);
     }
 
     public List<DonutReview> getReviews() {
@@ -118,16 +131,6 @@ public class Donut {
 
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
-    }
-
-    public String getFormattedDate() {
-        return DateUtils.formatDate(dateAdded);
-    }
-
-    public String getImagePath() {
-        if (imageFilename == null || shop == null)
-            return "none.jpg";
-        return shop.getImageDirectory() + "/" + imageFilename;
     }
 
     @Override

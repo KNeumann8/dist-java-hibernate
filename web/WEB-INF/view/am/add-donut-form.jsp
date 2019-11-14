@@ -2,21 +2,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add Donut</title>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/add-donut-style.css">
+    <title>Add New Donut</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/add-donut-style.css">
 </head>
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2>Donut Reviews</h2>
+        <h2>Add New Donut</h2>
     </div>
 </div>
 
 <div id="container">
-    <h3>Save Donut</h3>
     <div id="content">
-        <form:form action="save" modelAttribute="donut">
+        <form:form action="save" modelAttribute="aDonut" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td><label>Name</label></td>
@@ -31,18 +30,22 @@
                 <tr>
                     <td><label>Shop</label></td>
                     <td>
-                        <form:select path="shop" items="${donutShops}" itemLabel="name" itemValue="id">
+                        <form:select path="shop" items="${shops}" itemLabel="name" itemValue="id">
                         </form:select>
                     </td>
+                </tr>
+                <tr>
+                    <td><label>Image</label></td>
+                    <td><input type="file" name="donutImage"></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Save" class="save"></td>
                 </tr>
             </table>
+
         </form:form>
     </div>
-
 </div>
 </body>
 </html>

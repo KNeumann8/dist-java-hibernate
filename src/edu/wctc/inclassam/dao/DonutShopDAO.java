@@ -5,7 +5,7 @@ import edu.wctc.inclassam.entity.DonutShop;
 import java.util.List;
 
 public interface DonutShopDAO {
-    List<DonutShop> getDonutShops();
+    List<DonutShop> getShops();
 
-    DonutShop getDonutShop(int id);
+    DonutShop getShop(int id);
 }

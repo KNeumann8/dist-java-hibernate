@@ -38,5 +38,6 @@
     <orderEntry type="library" name="jstl" level="project" />
     <orderEntry type="library" name="fileupload" level="project" />
     <orderEntry type="library" name="validator" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.22" level="application_server_libraries" />
   </component>
 </module>
