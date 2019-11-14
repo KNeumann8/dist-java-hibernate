@@ -7,32 +7,33 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/add-donut-style.css">
 </head>
 <body>
-    <form:form action="save" modelAttribute="aDonut">
-        <table>
-            <tr>
-                <td><label>Name</label></td>
-                <td><form:input path="name"/></td>
-            </tr>
-            <tr>
-                <td><label>Calories</label></td>
-                <td><form:input path="calories"/></td>
-            </tr>
-            <tr>
-                <td><label>Shop</label></td>
-                <td><form:select items="${shops}" path="shop"
-                itemLabel="name" itemValue="shopId">
-
-                    </form:select></td>
-            </tr>
-            <tr>
-                <td><label>Image</label></td>
-                <td><input type="file" name="donutImage"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Save" class="save"></td>
-            </tr>
-        </table>
-    </form:form>
+<form:form action="save" modelAttribute="aDonut" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td><label>Name</label></td>
+            <td><form:input path="name"/>
+                <form:errors path="name" cssClass="error"/></td>
+        </tr>
+        <tr>
+            <td><label>Calories</label></td>
+            <td><form:input path="calories"/>
+                <form:errors path="calories" cssClass="error"/></td>
+        </tr>
+        <tr>
+            <td><label>Shop</label></td>
+            <td><form:select items="${shops}" path="shop"
+                             itemLabel="name" itemValue="shopId">
+            </form:select></td>
+        </tr>
+        <tr>
+            <td><label>Image</label></td>
+            <td><input type="file" name="donutImage"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Save" class="save"></td>
+        </tr>
+    </table>
+</form:form>
 </body>
 </html>

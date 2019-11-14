@@ -4,13 +4,16 @@ import edu.wctc.inclasspm.entity.Donut;
 import edu.wctc.inclasspm.service.DonutService;
 import edu.wctc.inclasspm.service.DonutShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -43,10 +46,27 @@ public class DonutController {
     }
 
     @PostMapping("/save")
-    public String saveDonut(@ModelAttribute(name="donut") Donut theDonut) {
-        donutService.saveDonut(theDonut);
+    public String saveDonut(@RequestParam(name = "donutImage") MultipartFile file,
+                            @Valid @ModelAttribute(name = "aDonut") Donut theDonut,
+                            BindingResult bindingResult,
+                            Model theModel,
+                            HttpServletRequest request) {
+        if (bindingResult.hasErrors()) {
+            theModel.addAttribute("shops", donutShopService.getDonutShops());
+            return "pm/add-donut-form";
+        }
+
+        String applicationPath = request.getServletContext().getRealPath("/");
+
+        donutService.saveDonut(theDonut, file, applicationPath);
 
         return "redirect:/donut/list";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        StringTrimmerEditor ste = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, ste);
     }
 
 }

@@ -3,6 +3,9 @@ package edu.wctc.inclasspm.entity;
 import edu.wctc.DateUtils;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,13 +30,19 @@ public class Donut {
     private List<DonutReview> reviews;
 
 
-
+    @NotNull(message = "required")
+    @Size(min = 1, max = 30, message = "1-30 characters")
     @Column(name="nm")
     private String name;
+
+    @NotNull(message = "required")
+    @Min(value = 1, message = "greater than 0")
     @Column(name="calories")
-    private int calories;
+    private Integer calories;
+
     @Column(name="img_filename")
     private String imageFilename;
+
     @Column(name="date_added")
     private Date dateAdded;
 
@@ -87,11 +96,11 @@ public class Donut {
         this.name = name;
     }
 
-    public int getCalories() {
+    public Integer getCalories() {
         return calories;
     }
 
-    public void setCalories(int calories) {
+    public void setCalories(Integer calories) {
         this.calories = calories;
     }
 
