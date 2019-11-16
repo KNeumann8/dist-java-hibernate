@@ -7,6 +7,12 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/add-donut-style.css">
 </head>
 <body>
+<div id="wrapper">
+    <div id="header">
+        <h2>New Donut</h2>
+    </div>
+</div>
+
 <form:form action="save" modelAttribute="aDonut" enctype="multipart/form-data">
     <table>
         <tr>

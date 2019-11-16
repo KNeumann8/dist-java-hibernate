@@ -36,7 +36,7 @@ public class DonutController {
     }
 
     @GetMapping("/showAddDonutForm")
-    public String showAddDonutForm(Model theModel){
+    public String showAddDonutForm(Model theModel) {
         Donut plainDonut = new Donut();
 
         theModel.addAttribute("aDonut", plainDonut);
@@ -47,8 +47,8 @@ public class DonutController {
     }
 
     @PostMapping("/save")
-    public String saveDonut(@RequestParam(name="donutImage") MultipartFile file,
-                            @Valid @ModelAttribute(name="aDonut") Donut theDonut,
+    public String saveDonut(@RequestParam(name = "donutImage") MultipartFile file,
+                            @Valid @ModelAttribute(name = "aDonut") Donut theDonut,
                             BindingResult bindingResult,
                             Model theModel,
                             HttpServletRequest request) {
@@ -62,6 +62,7 @@ public class DonutController {
 
         return "redirect:/donut/list";
     }
+
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {

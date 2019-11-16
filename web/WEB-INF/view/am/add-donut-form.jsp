@@ -9,7 +9,7 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2>Add New Donut</h2>
+        <h2>New Donut</h2>
     </div>
 </div>
 
