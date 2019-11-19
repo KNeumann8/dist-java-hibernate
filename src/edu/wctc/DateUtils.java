@@ -7,6 +7,17 @@ import java.util.Date;
 public class DateUtils {
 
     private static final String PATTERN = "MM/dd/yyyy";
+    private static final String WEB_PATTERN = "yyyy-MM-dd HH:mm:ss.S";
+
+    public static Date parseWebDate(String str) {
+        try {
+            return new SimpleDateFormat(WEB_PATTERN).parse(str);
+        } catch (ParseException e) {
+            // If something fails, return today's date
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public static Date parseDate(String str) {
         try {

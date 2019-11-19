@@ -42,6 +42,7 @@
     <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <list>
+                <bean class="edu.wctc.inclasspm.service.converter.StringToDateConverter"/>
                 <bean class="edu.wctc.inclasspm.service.converter.StringToDonutShopConverter"/>
             </list>
         </property>
