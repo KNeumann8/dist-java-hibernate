@@ -16,6 +16,10 @@
 <div id="container">
     <div id="content">
         <form:form action="save" modelAttribute="aDonut" enctype="multipart/form-data">
+            <form:hidden path="id" value="${aDonut.id}"/>
+            <form:hidden path="imageFilename" value="${aDonut.imageFilename}"/>
+            <form:hidden path="dateAdded" value="${aDonut.dateAdded}"/>
+
             <table>
                 <tr>
                     <td><label>Name</label></td>

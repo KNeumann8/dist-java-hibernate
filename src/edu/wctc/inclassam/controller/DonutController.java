@@ -35,6 +35,36 @@ public class DonutController {
         return "am/list-donuts";
     }
 
+    @GetMapping("/search")
+    public String search(@RequestParam("searchTerm") String theSearchTerm,
+                         Model theModel) {
+
+        List<Donut> theList = donutService.getDonutsByName(theSearchTerm);
+
+        theModel.addAttribute("donuts", theList);
+
+        return "am/list-donuts";
+    }
+
+    @GetMapping("/delete")
+    public String deleteDonut(@RequestParam("donutId") int theId){
+        donutService.deleteDonut(theId);
+
+        return "redirect:/donut/list";
+    }
+
+    @RequestMapping("/showUpdateDonutForm")
+    public String showUpdateDonutForm(@RequestParam("donutId") int theId,
+                                      Model theModel) {
+        Donut existingDonut = donutService.getDonut(theId);
+
+        theModel.addAttribute("aDonut", existingDonut);
+
+        theModel.addAttribute("shops", donutShopService.getShops());
+
+        return "am/add-donut-form";
+    }
+
     @GetMapping("/showAddDonutForm")
     public String showAddDonutForm(Model theModel) {
         Donut plainDonut = new Donut();
@@ -53,6 +83,8 @@ public class DonutController {
                             Model theModel,
                             HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult);
+
             theModel.addAttribute("shops", donutShopService.getShops());
 
             return "am/add-donut-form";

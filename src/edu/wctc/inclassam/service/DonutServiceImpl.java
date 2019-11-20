@@ -39,8 +39,28 @@ public class DonutServiceImpl implements DonutService {
                 applicationPath,
                 aDonut.getShop().getImageDirectory());
 
-        aDonut.setImageFilename(filename);
+        if (filename != null) {
+            aDonut.setImageFilename(filename);
+        }
 
         donutDAO.saveDonut(aDonut);
+    }
+
+    @Override
+    @Transactional
+    public Donut getDonut(int theId) {
+        return donutDAO.getDonut(theId);
+    }
+
+    @Override
+    @Transactional
+    public void deleteDonut(int theId) {
+        donutDAO.deleteDonut(theId);
+    }
+
+    @Override
+    @Transactional
+    public List<Donut> getDonutsByName(String theSearchTerm) {
+        return donutDAO.getDonutsByName(theSearchTerm);
     }
 }

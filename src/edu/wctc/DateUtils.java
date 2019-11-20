@@ -13,7 +13,7 @@ public class DateUtils {
         try {
             return new SimpleDateFormat(WEB_PATTERN).parse(str);
         } catch (ParseException e) {
-            // If something fails, return today's date
+            // If something fails, return null
             e.printStackTrace();
             return null;
         }
