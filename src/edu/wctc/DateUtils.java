@@ -19,6 +19,8 @@ public class DateUtils {
         }
     }
 
+    //This is a small change
+
     public static Date parseDate(String str) {
         try {
             return new SimpleDateFormat(PATTERN).parse(str);
